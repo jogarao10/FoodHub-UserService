@@ -12,8 +12,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())  // ✅ Correct way to disable CSRF in Spring Security 6
+                .csrf(csrf -> csrf.disable())  // ✅ Correct CSRF disable syntax for Spring Security 6
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html"  // ✅ Allow Swagger endpoints
+                        ).permitAll()
                         .requestMatchers("/users/register", "/users/login").permitAll()
                         .anyRequest().authenticated()
                 )
