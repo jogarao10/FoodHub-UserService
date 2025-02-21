@@ -1,7 +1,8 @@
 package com.cs.foodhubuserservice.controller;
 
+
 import com.cs.foodhubuserservice.entity.User;
-import com.cs.foodhubuserservice.service.UserService;
+import com.cs.foodhubuserservice.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,15 +11,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
-    @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
+    @PostMapping("/save")
+    public User addUser(@RequestBody User user) {
         return userService.registerUser(user);
     }
 
-    @PostMapping("/login")
-    public String loginUser(@RequestParam String email, @RequestParam String password) {
-        return userService.loginUser(email, password);
-    }
+
+
+
 }

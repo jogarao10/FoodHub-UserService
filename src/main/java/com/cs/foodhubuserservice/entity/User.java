@@ -16,14 +16,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-
     private String name;
     private String email;
     private String password;
-    private String role; // USER, ADMIN
     private String location;
-
-    private Boolean isActive = true; // To enable/disable user
+    private String phone;
+    private String gender;
+    private String address;
 
     public Long getUserId() {
         return userId;
@@ -57,14 +56,6 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getLocation() {
         return location;
     }
@@ -73,12 +64,42 @@ public class User {
         this.location = location;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", location='" + location + '\'' +
+                ", phone='" + phone + '\'' +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }
 
